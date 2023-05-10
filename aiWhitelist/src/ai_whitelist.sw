@@ -8,6 +8,9 @@ abi aiWhitelist {
 
     #[storage(read, write)]
     fn rsvp(list_id: u64) -> Whitelist;
+
+    #[storage(read)]
+    fn get_rsvp(list_id: u64) -> Whitelist;
 }
 
 // defining the struct here because it would be used by other developers who would be importing this ABI
