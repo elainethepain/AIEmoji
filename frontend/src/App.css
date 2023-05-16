@@ -1,0 +1,18 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 239 239/var(--tw-bg-opacity));
+  background-image: url(images/swirl.svg);
+  background-attachment: fixed;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
