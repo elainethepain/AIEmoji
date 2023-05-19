@@ -27,6 +27,12 @@ function App() {
             <Badge variant='outline' fontSize="1em" mb="2" colorScheme='pink'>
               Coming Soon in 2023
             </Badge>
+            <Heading className="" size='xl'>
+              Turn Your Memes into Emojis.
+            </Heading>
+            <Heading className="" size='lg'>
+              AI generated emojis birthed by the best memes.
+            </Heading>
             <Button className="signup_button" colorScheme='purple' size='md'>
               Signup for Beta
             </Button>
