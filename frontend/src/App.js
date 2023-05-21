@@ -63,7 +63,13 @@ function App() {
           </span>
           </h1>
           <Spacer />
-          <Button className="fuel_network" size='md'>Connect to Fuel Network</Button>
+          {wallet.isConnected ? (
+            <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
+
+          ) : (
+            <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
+          )}
+
         </Flex>
         <Stack className="stack_container" direction='row'>
           <Stack className="heading_stack_container" direction="column">
@@ -76,7 +82,7 @@ function App() {
             <Heading className="" size='lg'>
               AI generated emojis birthed by the best memes.
             </Heading>
-            <Button className="signup_button" colorScheme='purple' size='md'>
+            <Button className="signup_button" onClick={joinWhitelist} colorScheme='purple' size='md'>
               Signup for Beta
             </Button>
           </Stack>
