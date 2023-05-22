@@ -1,5 +1,7 @@
 import React from 'react';
+import { whitelistAbi } from "./contracts/whitelistabi";
 import { useWallet, useContract } from "fuels-react";
+import { useState } from "react";
 import {
   ChakraProvider,
   Code,
@@ -63,6 +65,9 @@ function App() {
           </span>
           </h1>
           <Spacer />
+          <Text className="" size='md'>
+            Demo
+          </Text>
           {wallet.isConnected ? (
             <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
 
