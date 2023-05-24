@@ -5,6 +5,7 @@ import { FuelProvider, createClient } from 'fuels-react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { ChakraProvider } from '@chakra-ui/react'
 
 const client = createClient({ chains: ['beta-2'] });
 const container = document.getElementById('root');
@@ -12,10 +13,12 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <StrictMode>
-    <ColorModeScript />
-    <FuelProvider client={client}>
-      <App />
-    </FuelProvider>
+    <ChakraProvider>
+      <ColorModeScript />
+      <FuelProvider client={client}>
+        <App />
+      </FuelProvider>
+    </ChakraProvider>
   </StrictMode>
 );
 
