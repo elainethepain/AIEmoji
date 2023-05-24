@@ -40,6 +40,10 @@ body {
   margin: min(0em, calc(calc(1.3em - var(--framer-line-height, 1.3em)) / -2));
 }
 
+.demo_text {
+  margin-right: 0.7em;
+}
+
 .nav_container {
   padding-top: 0.8rem;
   margin-right: 3em;

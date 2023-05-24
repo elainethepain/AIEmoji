@@ -65,8 +65,10 @@ function App() {
           </span>
           </h1>
           <Spacer />
-          <Text className="" size='md'>
-            Demo
+          <Text className="word_logo demo_text" size='md'>
+            <span data-text-fill="true" class="word_logo">
+              Demo
+            </span>
           </Text>
           {wallet.isConnected ? (
             <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
