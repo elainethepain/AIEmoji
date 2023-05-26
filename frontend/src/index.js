@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter } from 'react-router-dom';
 
 const client = createClient({ chains: ['beta-2'] });
 const container = document.getElementById('root');
@@ -13,12 +14,14 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <StrictMode>
-    <ChakraProvider>
-      <ColorModeScript />
-      <FuelProvider client={client}>
-        <App />
-      </FuelProvider>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider>
+        <ColorModeScript />
+        <FuelProvider client={client}>
+          <App />
+        </FuelProvider>
+      </ChakraProvider>
+    </BrowserRouter>
   </StrictMode>
 );
 
