@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Routes, Link } from "react-router-dom"
 import { whitelistAbi } from "../contracts/whitelistabi";
 import { useWallet, useContract } from "fuels-react";
 import { useState } from "react";
@@ -66,9 +67,10 @@ function Home() {
           </h1>
           <Spacer />
           <Text className="word_logo demo_text" size='md'>
-            <span data-text-fill="true" class="word_logo">
+            <Link to="/Demo"><span data-text-fill="true" class="word_logo">
               Demo
             </span>
+            </Link>
           </Text>
           {wallet.isConnected ? (
             <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
@@ -95,7 +97,7 @@ function Home() {
           </Stack>
         </Stack>
       </Center>
-    </ChakraProvider>
+    </ChakraProvider >
   );
 }
 
