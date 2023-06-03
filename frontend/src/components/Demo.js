@@ -11,20 +11,23 @@ import "../css/Demo.css";
 function Demo() {
   const wallet = useWallet();
   return (
-    <>  <Flex className="nav_container">
-      <h1 class="word_logo"><span data-text-fill="true" class="word_logo">
-        <Link to="/Home">AI EMOJI</Link>
-      </span>
-      </h1>
-      <Spacer />
-      {wallet.isConnected ? (
-        <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
+    <>
+      <Center className="container">
+        <Flex className="nav_container">
+          <h1 class="word_logo"><span data-text-fill="true" class="word_logo">
+            <Link to="/home">AI EMOJI</Link>
+          </span>
+          </h1>
+          <Spacer />
+          {wallet.isConnected ? (
+            <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
 
-      ) : (
-        <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
-      )}
+          ) : (
+            <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
+          )}
 
-    </Flex>
+        </Flex>
+      </Center>
     </>
   );
 }

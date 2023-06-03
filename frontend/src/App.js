@@ -5,7 +5,7 @@ import Demo from "./components/Demo"
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/demo" element={<Demo />} />
     </Routes>
   )
