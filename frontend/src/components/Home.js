@@ -6,6 +6,7 @@ import { useState } from "react";
 import {
   ChakraProvider,
   theme,
+  useToast
 } from '@chakra-ui/react';
 import { Heading, Center, Button, Flex, Spacer, Box, Image, Stack, Divider, Badge, Text } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
@@ -14,7 +15,7 @@ import "../css/Home.css";
 
 function Home() {
   const wallet = useWallet();
-
+  const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [listName, setListName] = useState("");
   const [rsvpConfirmed, setRSVPConfirmed] = useState(false);

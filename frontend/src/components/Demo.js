@@ -13,7 +13,7 @@ function Demo() {
   return (
     <>
       <Center className="container">
-        <Flex className="nav_container">
+        <Flex as="nav" boxShadow="sm" className="nav_container">
           <h1 class="word_logo"><span data-text-fill="true" class="word_logo">
             <Link to="/home">AI EMOJI</Link>
           </span>
@@ -27,6 +27,7 @@ function Demo() {
           )}
 
         </Flex>
+
       </Center>
     </>
   );
