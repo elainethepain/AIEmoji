@@ -5,7 +5,7 @@ import { FuelProvider, createClient } from 'fuels-react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, theme } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom';
 
 const client = createClient({ chains: ['beta-2'] });
@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <ColorModeScript />
         <FuelProvider client={client}>
           <App />
