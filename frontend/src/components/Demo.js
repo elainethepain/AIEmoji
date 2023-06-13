@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import { whitelistAbi } from "../contracts/whitelistabi";
-import { useWallet, useContract } from "fuels-react";
+import { useWallet } from "fuels-react";
 import { useState } from "react";
-import { Heading, Center, Button, Flex, Spacer, Box, Image, Stack, Divider, Badge, Text } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import "../css/Demo.css";
 
@@ -27,7 +25,12 @@ function Demo() {
           )}
 
         </Flex>
-
+        <Stack spacing={2}>
+          <InputGroup>
+            <Input type='text' placeholder='Search Memesr' />
+            <InputRightAddon children='.com' />
+          </InputGroup>
+        </Stack>
       </Center>
     </>
   );
