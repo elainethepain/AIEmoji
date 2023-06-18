@@ -4,7 +4,8 @@ import { useWallet } from "fuels-react";
 import { useState } from "react";
 import { Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
-import "../css/Demo.css";
+import Meme from './Meme';
+import "../css/Meme.css";
 
 function Demo() {
   const wallet = useWallet();
@@ -25,12 +26,13 @@ function Demo() {
           )}
 
         </Flex>
-        <Stack spacing={2}>
+        <Stack className="searchbar" spacing={2}>
           <InputGroup>
-            <Input type='text' placeholder='Search Memesr' />
+            <Input type='text' placeholder='Search Memes' />
             <InputRightAddon children='.com' />
           </InputGroup>
         </Stack>
+        <Meme />
       </Center>
     </>
   );
