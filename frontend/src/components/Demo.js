@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { API_KEY } from "@env";
 import { Link } from "react-router-dom"
 import { useWallet } from "fuels-react";
-import { useState } from "react";
 import { Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
 import "../css/Meme.css";
 
 function Demo() {
+
+  const fetchImages = () => {
+    fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+      }
+    })
+      .then(response => response.json())
+      .then((newData) => {
+        console.log(newData)
+      })
+  }
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
   const wallet = useWallet();
   return (
     <>
