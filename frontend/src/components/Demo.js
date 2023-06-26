@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { API_KEY } from "@env";
 import { Link } from "react-router-dom"
 import { useWallet } from "fuels-react";
 import { Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
@@ -14,7 +13,7 @@ function Demo() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
         'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
       }
     })

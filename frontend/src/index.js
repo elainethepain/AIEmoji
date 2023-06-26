@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import { ChakraProvider, theme } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom';
 
+
 const client = createClient({ chains: ['beta-2'] });
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
