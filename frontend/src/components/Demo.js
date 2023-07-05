@@ -7,9 +7,78 @@ import Meme from './Meme';
 import "../css/Meme.css";
 
 function Demo() {
+  const [memeArray, setMemeArray] = useState([]);
+  const [memes, setMemes] = useState([]);
+
+  const homescreen = async () => {
+    let imagesToSet = await fetchImages()
+    let memesToSet = await getMemes(imagesToSet)
+    setMemeArray(imagesToSet)
+    setTags(tagsToSet)
+    let allGifsToSet = sortGifsByTags(tagsToSet, gifsToSet)
+    setAllGifs(allGifsToSet)
+    let compressedGifs = compressGifs(allGifsToSet)
+    setpopularGifs(compressedGifs)
+  }
+  homescreen()
+
+
+  const getMemes = () => {
+    let fetched;
+    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/meme', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+      },
+      params: {
+        top: '',
+        bottom: '',
+        meme,
+      },
+    })
+      .then(response => response.json())
+      .then((newData) => {
+        fetched = newData;
+        return fetched;
+      })
+  }
+  const getMemes = () => {
+    const options = {
+      method: 'GET',
+      url: 'https://ronreiter-meme-generator.p.rapidapi.com/meme',
+      params: {
+        top: '',
+        bottom: '',
+        meme,
+      },
+      headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+      }
+    };
+  }
+
+  {
+    method: "GET",
+      mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+    params: { input: this.state.area },
+  }
+
+
+
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 
   const fetchImages = () => {
-    fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
+    let fetched;
+    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -19,7 +88,8 @@ function Demo() {
     })
       .then(response => response.json())
       .then((newData) => {
-        console.log(newData)
+        fetched = newData;
+        return fetched;
       })
   }
 
