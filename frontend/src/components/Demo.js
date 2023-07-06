@@ -14,7 +14,7 @@ function Demo() {
     let imagesToSet = await fetchImages()
     let memesToSet = await getMemes(imagesToSet)
     setMemeArray(imagesToSet)
-    setTags(tagsToSet)
+    setTags(memesToSet)
     let allGifsToSet = sortGifsByTags(tagsToSet, gifsToSet)
     setAllGifs(allGifsToSet)
     let compressedGifs = compressGifs(allGifsToSet)
@@ -23,7 +23,7 @@ function Demo() {
   homescreen()
 
 
-  const getMemes = () => {
+  const getMemes = (meme) => {
     let fetched;
     return fetch('https://ronreiter-meme-generator.p.rapidapi.com/meme', {
       method: 'GET',
@@ -39,42 +39,17 @@ function Demo() {
       },
     })
       .then(response => response.json())
-      .then((newData) => {
-        fetched = newData;
-        return fetched;
-      })
-  }
-  const getMemes = () => {
-    const options = {
-      method: 'GET',
-      url: 'https://ronreiter-meme-generator.p.rapidapi.com/meme',
-      params: {
-        top: '',
-        bottom: '',
-        meme,
-      },
-      headers: {
-        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
-      }
-    };
   }
 
-  {
-    method: "GET",
-      mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-    params: { input: this.state.area },
-  }
+  const memePromises = imagesToSet[0].map(image =>
+    getMemes(image)
+  );
+  Promise.all(memePromises).then(data => { memesToSet(data) })
 
 
 
-  try {
-    const response = await axios.request(options);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
+
+
 
   const fetchImages = () => {
     let fetched;
