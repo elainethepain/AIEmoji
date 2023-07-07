@@ -14,11 +14,6 @@ function Demo() {
     let imagesToSet = await fetchImages()
     let memesToSet = await getMemes(imagesToSet)
     setMemeArray(imagesToSet)
-    setTags(memesToSet)
-    let allGifsToSet = sortGifsByTags(tagsToSet, gifsToSet)
-    setAllGifs(allGifsToSet)
-    let compressedGifs = compressGifs(allGifsToSet)
-    setpopularGifs(compressedGifs)
   }
   homescreen()
 
