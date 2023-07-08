@@ -10,15 +10,13 @@ function Demo() {
   const [memeArray, setMemeArray] = useState([]);
   const [memes, setMemes] = useState([]);
 
-  const homescreen = async () => {
+  const getMemes = async () => {
     let imagesToSet = await fetchImages()
-    let memesToSet = await getMemes(imagesToSet)
-    setMemeArray(imagesToSet)
+    let memesToSet = await memePromises(imagesToSet)
+    setMemes(memesToSet);
   }
-  homescreen()
 
-
-  const getMemes = (meme) => {
+  const fetchMemes = (meme) => {
     let fetched;
     return fetch('https://ronreiter-meme-generator.p.rapidapi.com/meme', {
       method: 'GET',
@@ -34,16 +32,21 @@ function Demo() {
       },
     })
       .then(response => response.json())
+      .then((newData) => {
+        fetched = newData;
+        return fetched;
+      })
   }
 
-  const memePromises = imagesToSet[0].map(image =>
-    getMemes(image)
-  );
-  Promise.all(memePromises).then(data => { memesToSet(data) })
-
-
-
-
+  const memePromises = () => {
+    memes[0].map(image =>
+      fetchMemes(image)
+    );
+    return Promise.all(memePromises).then(data => {
+      console.log(data)
+      return data
+    })
+  }
 
 
   const fetchImages = () => {
@@ -64,8 +67,8 @@ function Demo() {
   }
 
   useEffect(() => {
-    fetchImages();
-  }, []);
+    getMemes();
+  });
 
   const wallet = useWallet();
   return (
