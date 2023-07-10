@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import { useWallet } from "fuels-react";
-import { Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
+import { SimpleGrid, Heading, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
 import "../css/Meme.css";
@@ -13,7 +13,7 @@ function Demo() {
   const getMemes = async () => {
     let imagesToSet = await fetchImages()
     let memesToSet = await memePromises(imagesToSet)
-    setMemes(memesToSet);
+    setMemeArray(memesToSet);
   }
 
   const fetchMemes = (meme) => {
@@ -94,7 +94,12 @@ function Demo() {
             <InputRightAddon children='.com' />
           </InputGroup>
         </Stack>
-        <Meme />
+        <SimpleGrid columns={[2, null, 5]} spacing="5px" mt="2%">
+
+
+          <Meme item={meme} />
+
+        </SimpleGrid>
       </Center>
     </>
   );

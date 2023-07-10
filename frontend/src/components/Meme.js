@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
-function Meme() {
+function Meme(item) {
 
   return (<> <Box
     rounded={"lg"}
