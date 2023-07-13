@@ -97,7 +97,7 @@ function Demo() {
         <SimpleGrid columns={[2, null, 5]} spacing="5px" mt="2%">
 
 
-          <Meme item={meme} />
+          <Meme />
 
         </SimpleGrid>
       </Center>
