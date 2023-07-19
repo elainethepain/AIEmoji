@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, useColorModeValue, Image } from '@chakra-ui/react';
 
-function Meme(item) {
-
+function Meme({ item }) {
+  console.log('the item: ', item);
   return (<>
     <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
       <Image src={item} />
@@ -14,10 +14,6 @@ function Meme(item) {
       pb="2%"
       minHeight="450px"
     ></Box></>)
-
-
 }
-
-
 
 export default Meme;
