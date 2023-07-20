@@ -13,7 +13,6 @@ function Demo() {
   const wallet = useWallet();
 
 
-
   const getMemes = async () => {
     let imagesToSet = await fetchImages()
     // await fetchMemes(imagesToSet[0])
