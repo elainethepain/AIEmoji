@@ -58,6 +58,10 @@ body {
   top: 0;
 }
 
+.middle {
+  flex-direction: column;
+}
+
 
 .fuel_network {
   background: #25D0AB !important;

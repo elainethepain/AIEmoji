@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, useColorModeValue, Image } from '@chakra-ui/react';
 
 function Meme({ item }) {
-  console.log('the item: ', item);
   return (<>
     <Box maxW='sm' boxShadow={"lg"} rounded={"lg"} borderWidth='1px' borderRadius='lg' overflow='hidden'>
       <Image src={item} />
