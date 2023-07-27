@@ -126,7 +126,9 @@ function Demo() {
             </InputGroup>
           </Stack>
           <Stack>
-            <Meme item={testImages[0]} />
+            {testImages.map((data) => {
+              return <Meme item={data} />;
+            })}
           </Stack>
         </Stack>
       </Center>
