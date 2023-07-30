@@ -7,7 +7,7 @@ body {
 }
 
 .searchbar {
-  width: 50%;
+  width: 100%;
 }
 
 .container {
@@ -58,10 +58,15 @@ body {
   top: 0;
 }
 
-.middle {
-  flex-direction: column;
+.meme-container{
+  display:flex;
+  flex-direction: row !important;
+  width: 100%;
 }
 
+.middle {
+  flex-direction: row !important;
+}
 
 .fuel_network {
   background: #25D0AB !important;

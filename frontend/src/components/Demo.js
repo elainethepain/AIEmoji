@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import { useWallet } from "fuels-react";
-import { SimpleGrid, Image, Center, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
+import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
 import { testImages } from "../utils/test-images";
@@ -118,17 +118,17 @@ function Demo() {
 
         </Flex>
 
-        <Stack className="middle">
+        <Stack className='middle'>
           <Stack className="searchbar" spacing={2}>
             <InputGroup>
               <Input type='text' placeholder='Search Memes' />
               <InputRightAddon children='.com' />
             </InputGroup>
-          </Stack>
-          <Stack>
-            {testImages.map((data) => {
-              return <Meme item={data} />;
-            })}
+            <HStack className="meme-container">
+              {testImages.map((data) => {
+                return <Meme item={data} />;
+              })}
+            </HStack>
           </Stack>
         </Stack>
       </Center>
