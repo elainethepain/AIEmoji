@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import { useWallet } from "fuels-react";
 import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
@@ -8,21 +8,36 @@ import { testImages } from "../utils/test-images";
 import "../css/Meme.css";
 
 function Demo() {
-  const [images, setImages] = useState([]);
+  const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
 
   const wallet = useWallet();
 
 
-  const getMemes = async () => {
-    let imagesToSet = await fetchImages()
-    // await fetchMemes(imagesToSet[0])
+  const fetch_meme_title_array = () => {
+    let fetched;
+    console.log("calling...")
+    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+      }
+    })
+      .then(response => response.json())
+      .then((newData) => {
+        fetched = newData;
+        return fetched;
+      })
   }
 
   const fetchMemes = (meme) => {
     console.log(meme)
     let fetched;
-    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/meme', {
+    // const params = new URLSearchParams({
+    // })
+    return fetch(`https://ronreiter-meme-generator.p.rapidapi.com/${meme}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +55,8 @@ function Demo() {
         reader.readAsDataURL(blob);
         reader.onloadend = function () {
           let base64data = reader.result;
-          console.log(base64data);
+          // console.log(base64data);
+          console.log("called 1x")
           fetched = base64data;
           setMemes({ meme: fetched })
           return fetched;
@@ -55,49 +71,16 @@ function Demo() {
       .catch((err) => console.error(err));
   }
 
-  // .then((newData) => {
-  //   console.log('response from api', newData)
-  //   fetched = newData;
-  //   return fetched;
-  // })
-
-
-  // const memePromises = (array_of_images) => {
-  //   fetchMemes(array_of_images[0])
-
-  //   let array_of_promises = array_of_images.slice(0, 100).map(image => {
-  //     console.log(image)
-  //     return fetchMemes(image)
-  //   }
-  //   );
-
-  //   return Promise.all(array_of_promises).then(data => {
-  //     console.log(data)
-  //     return data
-  //   })
-  // }
-
-
-  const fetchImages = () => {
-    let fetched;
-    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
-      }
-    })
-      .then(response => response.json())
-      .then((newData) => {
-        fetched = newData;
-        return fetched;
-      })
-  }
-
   useEffect(() => {
+    const getMemes = async () => {
+      let titles = await fetch_meme_title_array();
+      // titles.map(title => fetchMemes(title))
+      await setMemeTitles(titles);
+      let meme = await fetchMemes(titles[0])
+      setMemes(meme);
+    }
     getMemes();
-  });
+  }, []);
 
 
   return (
@@ -115,7 +98,6 @@ function Demo() {
           ) : (
             <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
           )}
-
         </Flex>
 
         <Stack className='middle'>
@@ -125,8 +107,8 @@ function Demo() {
               <InputRightAddon children='.com' />
             </InputGroup>
             <HStack className="meme-container">
-              {testImages.map((data) => {
-                return <Meme item={data} />;
+              {memes && Object.values(memes).map((data) => {
+                return <Meme item={data} key={data.slice(30)} />;
               })}
             </HStack>
           </Stack>
