@@ -79,7 +79,7 @@ function Home() {
         ) : (
           <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
         )}
-
+        <Button className="optimism" size='md' >Connect to Optimism</Button>
       </Flex>
       <Stack className="stack_container" direction='row'>
         <Stack className="heading_stack_container" direction="column">

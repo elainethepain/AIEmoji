@@ -59,6 +59,12 @@ body {
   margin-right: 0.8rem;
 }
 
+.optimism {
+  background: #f01a37 !important;
+  margin-right: 0.8rem;
+  color: white;
+}
+
 .stack_container {
   position: relative;
   padding: 6rem 0 0 0 ;
