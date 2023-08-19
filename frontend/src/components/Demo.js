@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
+import axios from 'axios';
 import { useWallet } from "fuels-react";
 import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
@@ -10,77 +11,27 @@ import "../css/Meme.css";
 function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
-
   const wallet = useWallet();
 
 
-  const fetch_meme_title_array = () => {
-    let fetched;
-    console.log("calling...")
-    return fetch('https://ronreiter-meme-generator.p.rapidapi.com/images', {
+  const fetchMemes = () => {
+    let fetchedGifs;
+    return fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
+        'Authorization': `Bearer ${KEY}`
       }
     })
       .then(response => response.json())
       .then((newData) => {
-        fetched = newData;
-        return fetched;
+        let { records } = newData;
+        fetchedGifs = records
+        return fetchedGifs;
       })
   }
 
-  const fetchMemes = (meme) => {
-    console.log(meme)
-    let fetched;
-    // const params = new URLSearchParams({
-    // })
-    return fetch(`https://ronreiter-meme-generator.p.rapidapi.com/${meme}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-        'X-RapidAPI-Host': 'ronreiter-meme-generator.p.rapidapi.com'
-      },
-      params: {
-        top: '',
-        bottom: '',
-        meme,
-      },
-    })
-      .then((response) => response.blob()).then(blob => {
-        let reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function () {
-          let base64data = reader.result;
-          // console.log(base64data);
-          console.log("called 1x")
-          fetched = base64data;
-          setMemes({ meme: fetched })
-          return fetched;
-        }
-      })
-      // .then((blob) => URL.createObjectURL(blob))
-      // .then((url) => {
-      //   fetched = url;
-      //   console.log(fetched);
-      //   return fetched;
-      // })
-      .catch((err) => console.error(err));
-  }
-
-  useEffect(() => {
-    const getMemes = async () => {
-      let titles = await fetch_meme_title_array();
-      // titles.map(title => fetchMemes(title))
-      await setMemeTitles(titles);
-      let meme = await fetchMemes(titles[0])
-      setMemes(meme);
-    }
-    getMemes();
-  }, []);
+  useEffect(() => { }, []);
 
 
   return (
@@ -107,7 +58,7 @@ function Demo() {
               <InputRightAddon children='.com' />
             </InputGroup>
             <HStack className="meme-container">
-              {memes && Object.values(memes).map((data) => {
+              {memes && memes.map((data) => {
                 return <Meme item={data} key={data.slice(30)} />;
               })}
             </HStack>
