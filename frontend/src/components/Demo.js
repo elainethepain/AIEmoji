@@ -31,7 +31,10 @@ function Demo() {
       })
   }
 
-  useEffect(() => { }, []);
+  useEffect(() => {
+    let items = fetchMemes();
+    setMemeTitles(items)
+  }, []);
 
 
   return (
