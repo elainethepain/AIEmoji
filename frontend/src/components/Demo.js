@@ -16,18 +16,20 @@ function Demo() {
 
   const fetchMemes = () => {
     let fetchedGifs;
-    return fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE}`, {
-      method: 'GET',
+    return fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_ID}/${process.env.REACT_APP_TABLE}/listRecords`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${KEY}`
-      }
+        'Authorization': `Bearer ${process.env.REACT_APP_KEY}`
+      },
+      body: JSON.stringify({
+        fields: ["title", "link"]
+      }),
+
     })
       .then(response => response.json())
       .then((newData) => {
-        let { records } = newData;
-        fetchedGifs = records
-        return fetchedGifs;
+        return newData;
       })
   }
 
@@ -61,9 +63,9 @@ function Demo() {
               <InputRightAddon children='.com' />
             </InputGroup>
             <HStack className="meme-container">
-              {memes && memes.map((data) => {
+              {/* {memes && memes.map((data) => {
                 return <Meme item={data} key={data.slice(30)} />;
-              })}
+              })} */}
             </HStack>
           </Stack>
         </Stack>
