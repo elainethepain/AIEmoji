@@ -14,28 +14,25 @@ function Demo() {
   const wallet = useWallet();
 
 
-  const fetchMemes = () => {
-    let fetchedGifs;
-    return fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_ID}/${process.env.REACT_APP_TABLE}/listRecords`, {
-      method: 'POST',
+  const fetchMemes = async () => {
+    let fetched = [];
+    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_ID}/${process.env.REACT_APP_TABLE}`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.REACT_APP_KEY}`
       },
-      body: JSON.stringify({
-        fields: ["title", "link"]
-      }),
-
-    })
-      .then(response => response.json())
-      .then((newData) => {
-        return newData;
+    }).then(rs => rs).then(rs => rs.json()).then(
+      ({ records }) => {
+        let items = records.map(({ fields }) => fields)
+        console.log(items)
+        fetched = items
+        setMemes(fetched)
       })
   }
 
   useEffect(() => {
-    let items = fetchMemes();
-    setMemeTitles(items)
+    fetchMemes();
   }, []);
 
 
