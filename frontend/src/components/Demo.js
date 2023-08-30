@@ -60,9 +60,9 @@ function Demo() {
               <InputRightAddon children='.com' />
             </InputGroup>
             <HStack className="meme-container">
-              {/* {memes && memes.map((data) => {
-                return <Meme item={data} key={data.slice(30)} />;
-              })} */}
+              {memes && memes.map((data) => {
+                return <Meme item={data} key={data.item} />;
+              })}
             </HStack>
           </Stack>
         </Stack>
