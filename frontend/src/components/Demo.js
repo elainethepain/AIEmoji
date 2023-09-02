@@ -15,7 +15,6 @@ function Demo() {
 
 
   const fetchMemes = async () => {
-    let fetched = [];
     fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_BASE_ID}/${process.env.REACT_APP_TABLE}`, {
       method: 'GET',
       headers: {
@@ -25,9 +24,7 @@ function Demo() {
     }).then(rs => rs).then(rs => rs.json()).then(
       ({ records }) => {
         let items = records.map(({ fields }) => fields)
-        console.log(items)
-        fetched = items
-        setMemes(fetched)
+        setMemes(items)
       })
   }
 
@@ -53,19 +50,22 @@ function Demo() {
           )}
         </Flex>
 
-        <Stack className='middle'>
-          <Stack className="searchbar" spacing={2}>
+        {/* <Stack className='middle'> */}
+        <div className="demo_container">
+          <Box className="searchbar" spacing={2}>
             <InputGroup>
               <Input type='text' placeholder='Search Memes' />
               <InputRightAddon children='.com' />
             </InputGroup>
-            <HStack className="meme-container">
-              {memes && memes.map((data) => {
-                return <Meme item={data} key={data.item} />;
-              })}
-            </HStack>
-          </Stack>
-        </Stack>
+          </Box>
+          <div className="meme-container">
+            {memes.length > 0 && memes.map((data) => {
+              return <Meme data={data} key={data.title} />;
+            })}
+          </div>
+        </div>
+
+        {/* </Stack> */}
       </Center>
     </>
   );
