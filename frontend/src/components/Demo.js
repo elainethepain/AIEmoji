@@ -5,7 +5,6 @@ import { useWallet } from "fuels-react";
 import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
-import { testImages } from "../utils/test-images";
 import "../css/Meme.css";
 
 function Demo() {
@@ -49,6 +48,9 @@ function Demo() {
             <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
           )}
         </Flex>
+
+
+
 
         {/* <Stack className='middle'> */}
         <div className="demo_container">
