@@ -34,41 +34,39 @@ function Demo() {
 
   return (
     <>
-      <Center className="container">
-        <Flex as="nav" boxShadow="sm" className="nav_container">
-          <h1 className="word_logo"><span data-text-fill="true" className="word_logo">
-            <Link to="/home">AI EMOJI</Link>
-          </span>
-          </h1>
-          <Spacer />
-          {wallet.isConnected ? (
-            <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
+      <Flex as="nav" boxShadow="sm" className="nav_container">
+        <h1 className="word_logo"><span data-text-fill="true" className="word_logo">
+          <Link to="/home">AI EMOJI</Link>
+        </span>
+        </h1>
+        <Spacer />
+        {wallet.isConnected ? (
+          <Button className="fuel_network" size='md' onClick={wallet.disconnect}>Disconnect</Button>
 
-          ) : (
-            <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
-          )}
-        </Flex>
-
+        ) : (
+          <Button className="fuel_network" size='md' onClick={wallet.connect}>Connect to Fuel Network</Button>
+        )}
+      </Flex>
 
 
 
-        {/* <Stack className='middle'> */}
-        <div className="demo_container">
+
+      {/* <Stack className='middle'> */}
+      {/* <div className="demo_container">
           <Box className="searchbar" spacing={2}>
             <InputGroup>
               <Input type='text' placeholder='Search Memes' />
               <InputRightAddon children='.com' />
             </InputGroup>
-          </Box>
-          <div className="meme-container">
-            {memes.length > 0 && memes.map((data) => {
-              return <Meme data={data} key={data.title} />;
-            })}
-          </div>
-        </div>
+          </Box> */}
+      <div className="meme-container">
+        {memes.length > 0 && memes.map((data) => {
+          return <Meme data={data} key={data.title} />;
+        })}
+      </div>
+      {/* </div> */}
+      {/* </Stack> */}
 
-        {/* </Stack> */}
-      </Center>
     </>
   );
 }
