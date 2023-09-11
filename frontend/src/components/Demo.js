@@ -5,7 +5,7 @@ import { useWallet } from "fuels-react";
 import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
-import "../css/Meme.css";
+import "../css/Demo.css";
 
 function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);

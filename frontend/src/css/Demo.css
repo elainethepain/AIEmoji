@@ -60,16 +60,11 @@ body {
   top: 0;
 }
 .demo_container{
-  display:flex !important;
+  /* display:flex !important; */
   flex-direction: column;
   width: 100%;
 }
-.meme-container{
-  display:flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap;
-  width: 100%;
-}
+
 
 .middle {
   flex-direction: row !important;
@@ -93,4 +88,13 @@ body {
 
 .signup_button {
   margin-top: 1rem !important;
+}
+
+.meme-container{
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  width: 100vw;
+  margin-top: 0 auto;
+  margin-top: 5rem;
 }
