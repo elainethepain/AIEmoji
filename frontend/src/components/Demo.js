@@ -2,7 +2,15 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import axios from 'axios';
 import { useWallet } from "fuels-react";
-import { SimpleGrid, VStack, HStack, Image, Center, Box, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text } from '@chakra-ui/react';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton, useDisclosure, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text
+} from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
 import "../css/Demo.css";
@@ -10,6 +18,7 @@ import "../css/Demo.css";
 function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const wallet = useWallet();
 
 
@@ -26,6 +35,7 @@ function Demo() {
         setMemes(items)
       })
   }
+
 
   useEffect(() => {
     fetchMemes();
@@ -61,9 +71,29 @@ function Demo() {
           </Box> */}
       <div className="meme-container">
         {memes.length > 0 && memes.map((data) => {
-          return <Meme data={data} key={data.title} />;
+          return <Meme onClick={onOpen} data={data} key={data.title} />;
         })}
       </div>
+      <>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              content
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme='blue' mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant='ghost'>Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
       {/* </div> */}
       {/* </Stack> */}
 
