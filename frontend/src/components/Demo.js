@@ -18,7 +18,8 @@ import "../css/Demo.css";
 function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selected, setSelected] = useState('')
   const wallet = useWallet();
 
 
@@ -71,7 +72,7 @@ function Demo() {
           </Box> */}
       <div className="meme-container">
         {memes.length > 0 && memes.map((data) => {
-          return <Meme onClick={onOpen} data={data} key={data.title} />;
+          return <Meme onClick={(data) => { setSelected(data.link); onOpen() }} data={data} key={data.title} />;
         })}
       </div>
       <>
