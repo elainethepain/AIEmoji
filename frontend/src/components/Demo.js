@@ -72,7 +72,7 @@ function Demo() {
           </Box> */}
       <div className="meme-container">
         {memes.length > 0 && memes.map((data) => {
-          return <Meme onClick={(data) => { setSelected(data.link); onOpen() }} data={data} key={data.title} />;
+          return <Meme onOpen={onOpen} data={data} key={data.title} />;
         })}
       </div>
       <>
