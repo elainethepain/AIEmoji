@@ -80,7 +80,7 @@ function Demo() {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>Convert to Emoji</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               content
