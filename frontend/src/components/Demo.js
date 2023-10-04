@@ -83,7 +83,7 @@ function Demo() {
             <ModalHeader>Convert to Emoji</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              content
+              <Button>Convert</Button>
             </ModalBody>
 
             <ModalFooter>
