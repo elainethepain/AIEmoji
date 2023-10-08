@@ -83,7 +83,7 @@ function Demo() {
             <ModalHeader>Meme Title</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Button>Convert to Emoji</Button>
+              <Button>Convert Meme to Emoji</Button>
             </ModalBody>
 
             <ModalFooter>
