@@ -80,7 +80,7 @@ function Demo() {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Meme Title</ModalHeader>
+            <ModalHeader>Meme Title Goes Here</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <Button>Convert Meme to Emoji</Button>
