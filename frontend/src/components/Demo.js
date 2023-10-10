@@ -37,6 +37,8 @@ function Demo() {
       })
   }
 
+  const convert = async () => { }
+
 
   useEffect(() => {
     fetchMemes();
@@ -83,7 +85,7 @@ function Demo() {
             <ModalHeader>Meme Title Goes Here</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Button>Convert Meme to Emoji</Button>
+              <Button onClick={convert}>Convert Meme to Emoji</Button>
             </ModalBody>
 
             <ModalFooter>
