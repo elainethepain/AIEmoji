@@ -37,7 +37,9 @@ function Demo() {
       })
   }
 
-  const convert = async () => { }
+  const convert = async () => {
+    return selected;
+  }
 
 
   useEffect(() => {
