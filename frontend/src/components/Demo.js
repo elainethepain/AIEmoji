@@ -76,7 +76,7 @@ function Demo() {
           </Box> */}
       <div className="meme-container">
         {memes.length > 0 && memes.map((data) => {
-          return <Meme onOpen={onOpen} data={data} key={data.title} />;
+          return <Meme modal={() => { setSelected(data.title) }} onOpen={onOpen} data={data} key={data.title} />;
         })}
       </div>
       <>
@@ -84,10 +84,10 @@ function Demo() {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Meme Title Goes Here</ModalHeader>
+            <ModalHeader>{`${selected}`} Meme </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Button onClick={convert}>Convert Meme to Emoji</Button>
+              <Button onClick={convert}>Convert {`${selected}`} meme to Emoji</Button>
             </ModalBody>
 
             <ModalFooter>
