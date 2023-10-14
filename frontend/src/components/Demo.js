@@ -9,7 +9,7 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton, useDisclosure, Button, Flex, Spacer, Input, InputGroup, Stack, InputRightAddon, Badge, Text
+  ModalCloseButton, useDisclosure, Button, Flex, Spacer, Spinner, Input, InputGroup, Stack, InputRightAddon, Badge, Text
 } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
@@ -19,6 +19,7 @@ function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isLoading, setIsLoading } = (false)
   const [selected, setSelected] = useState('')
   const wallet = useWallet();
 
@@ -38,6 +39,7 @@ function Demo() {
   }
 
   const convert = async () => {
+    setIsLoading(true)
     return selected;
   }
 
@@ -88,6 +90,7 @@ function Demo() {
             <ModalCloseButton />
             <ModalBody>
               <Button onClick={convert}>Convert {`${selected}`} meme to Emoji</Button>
+              {isLoading && <Spinner />}
             </ModalBody>
 
             <ModalFooter>
