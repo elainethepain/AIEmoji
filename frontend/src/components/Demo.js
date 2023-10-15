@@ -19,7 +19,7 @@ function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLoading, setIsLoading } = (false)
+  const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState('')
   const wallet = useWallet();
 
@@ -39,8 +39,7 @@ function Demo() {
   }
 
   const convert = async () => {
-    setIsLoading(true)
-    return selected;
+    setLoading(true)
   }
 
 
@@ -90,7 +89,7 @@ function Demo() {
             <ModalCloseButton />
             <ModalBody>
               <Button onClick={convert}>Convert {`${selected}`} meme to Emoji</Button>
-              {isLoading && <Spinner />}
+              {loading && <Spinner />}
             </ModalBody>
 
             <ModalFooter>
