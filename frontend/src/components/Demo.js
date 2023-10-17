@@ -9,7 +9,7 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton, useDisclosure, Button, Flex, Spacer, Spinner, Input, InputGroup, Stack, InputRightAddon, Badge, Text
+  ModalCloseButton, useDisclosure, Button, Flex, Spacer, Spinner, Image, Box, Input, InputGroup, Stack, InputRightAddon, Badge, Text
 } from '@chakra-ui/react';
 import { Logo } from '../Logo';
 import Meme from './Meme';
@@ -20,7 +20,7 @@ function Demo() {
   const [memes, setMemes] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(false)
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState({});
   const wallet = useWallet();
 
 
@@ -77,7 +77,7 @@ function Demo() {
           </Box> */}
       <div className="meme-container">
         {memes.length > 0 && memes.map((data) => {
-          return <Meme modal={() => { setSelected(data.title) }} onOpen={onOpen} data={data} key={data.title} />;
+          return <Meme modal={() => { setSelected({ ...data }) }} onOpen={onOpen} data={data} key={data.title} />;
         })}
       </div>
       <>
@@ -85,10 +85,14 @@ function Demo() {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>{`${selected}`} Meme </ModalHeader>
+            <ModalHeader>{`${selected.title}`}</ModalHeader>
+            <Box maxW='sm' pb="2%" className='image_box'
+              height="200px" width="200px" boxShadow={"lg"} rounded={"lg"} borderWidth='1px' borderRadius='lg' overflow='hidden'>
+              <div className='image_container'><Image src={selected.link} /></div>
+            </Box>
             <ModalCloseButton />
             <ModalBody>
-              <Button onClick={convert}>Convert {`${selected}`} meme to Emoji</Button>
+              <Button onClick={convert}>Convert to Emoji</Button>
               {loading && <Spinner />}
             </ModalBody>
 
