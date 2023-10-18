@@ -19,7 +19,8 @@ function Demo() {
   const [memeTitles, setMemeTitles] = useState([]);
   const [memes, setMemes] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [available, setAvailable] = useState(false);
   const [selected, setSelected] = useState({});
   const wallet = useWallet();
 
@@ -40,6 +41,7 @@ function Demo() {
 
   const convert = async () => {
     setLoading(true)
+    setAvailable(true)
   }
 
 
@@ -100,7 +102,7 @@ function Demo() {
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
-              <Button variant='ghost'>Secondary Action</Button>
+              {available && <Button>Download</Button>}
             </ModalFooter>
           </ModalContent>
         </Modal>
