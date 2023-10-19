@@ -69,48 +69,48 @@ function Demo() {
 
 
 
-      {/* <Stack className='middle'> */}
-      {/* <div className="demo_container">
+      <Stack className='middle'>
+        <div className="demo_container">
           <Box className="searchbar" spacing={2}>
             <InputGroup>
               <Input type='text' placeholder='Search Memes' />
               <InputRightAddon children='.com' />
             </InputGroup>
-          </Box> */}
-      <div className="meme-container">
-        {memes.length > 0 && memes.map((data) => {
-          return <Meme modal={() => { setSelected({ ...data }) }} onOpen={onOpen} data={data} key={data.title} />;
-        })}
-      </div>
-      <>
+          </Box>
+          <div className="meme-container">
+            {memes.length > 0 && memes.map((data) => {
+              return <Meme modal={() => { setSelected({ ...data }) }} onOpen={onOpen} data={data} key={data.title} />;
+            })}
+          </div>
+        </div>
+      </Stack>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>{`${selected.title}`}</ModalHeader>
-            <Box maxW='sm' pb="2%" className='image_box'
-              height="200px" width="200px" boxShadow={"lg"} rounded={"lg"} borderWidth='1px' borderRadius='lg' overflow='hidden'>
-              <div className='image_container'><Image src={selected.link} /></div>
-            </Box>
-            <ModalCloseButton />
-            <ModalBody>
-              <Button onClick={convert}>Convert to Emoji</Button>
-              {loading && <Spinner />}
-            </ModalBody>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{`${selected.title}`}</ModalHeader>
+          <Box maxW='sm' pb="2%" className='image_box'
+            height="200px" width="200px" boxShadow={"lg"} rounded={"lg"} borderWidth='1px' borderRadius='lg' overflow='hidden'>
+            <div className='image_container'><Image src={selected.link} /></div>
+          </Box>
+          <ModalCloseButton />
+          <ModalBody>
+            <Button onClick={convert}>Convert to Emoji</Button>
+            {loading && <Spinner />}
+          </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-              </Button>
-              {available && <Button>Download</Button>}
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-      {/* </div> */}
-      {/* </Stack> */}
-
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            {available && <Button>Download</Button>}
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
+
+
+
   );
 }
 
