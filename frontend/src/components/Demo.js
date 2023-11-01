@@ -74,7 +74,7 @@ function Demo() {
           <Box className="searchbar" spacing={2}>
             <InputGroup>
               <Input type='text' placeholder='Search Memes' />
-              <InputRightAddon children='.com' />
+              <InputRightAddon children='Search' />
             </InputGroup>
           </Box>
           <div className="meme-container">
