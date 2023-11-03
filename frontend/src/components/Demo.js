@@ -42,6 +42,7 @@ function Demo() {
   const convert = async () => {
     setLoading(true)
     setAvailable(true)
+    let memeStr = `${selected} as a sticker`
   }
 
 
