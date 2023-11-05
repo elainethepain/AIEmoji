@@ -105,6 +105,7 @@ function Demo() {
               Close
             </Button>
             {available && <Button>Download</Button>}
+            {available && <Button>Share</Button>}
           </ModalFooter>
         </ModalContent>
       </Modal>
