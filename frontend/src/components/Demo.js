@@ -43,6 +43,7 @@ function Demo() {
     setLoading(true)
     setAvailable(true)
     let memeStr = `${selected} as a sticker`
+    let info = fetch(`${memeStr}`);
     setLoading(false)
   }
 
