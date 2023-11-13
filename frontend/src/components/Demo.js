@@ -22,6 +22,7 @@ function Demo() {
   const [loading, setLoading] = useState(false);
   const [available, setAvailable] = useState(false);
   const [selected, setSelected] = useState({});
+  const [info, setInfo] = useState('');
   const wallet = useWallet();
 
 
@@ -43,7 +44,8 @@ function Demo() {
     setLoading(true)
     setAvailable(true)
     let memeStr = `${selected} as a sticker`
-    let info = fetch(`${memeStr}`);
+    let meme_info = fetch(`${memeStr}`);
+    setInfo(meme_info);
     setLoading(false)
   }
 
