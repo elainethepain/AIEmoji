@@ -104,6 +104,7 @@ function Demo() {
             {loading && <Spinner />}
             {loading && info}
             {loading && info}
+            {loading && info}
           </ModalBody>
 
           <ModalFooter>
