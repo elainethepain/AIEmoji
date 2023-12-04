@@ -103,6 +103,7 @@ function Demo() {
             <Button onClick={convert}>Convert to Emoji</Button>
             {loading && <Spinner />}
             {loading && info}
+            {loading && info}
           </ModalBody>
 
           <ModalFooter>
