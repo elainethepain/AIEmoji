@@ -116,6 +116,7 @@ function Demo() {
             {loading && info}
             {loading && info}
             {loading && info}
+            {loading && info}
 
           </ModalBody>
 
